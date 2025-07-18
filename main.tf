@@ -1,6 +1,12 @@
 resource "juju_model" "landscape" {
   name = var.model_name
   constraints = "arch=${var.arch}"
+  credential = var.credential_name
+
+  cloud {
+    name = var.cloud_name
+    region = var.cloud_region
+  }
 
   provisioner "local-exec" {
     command = <<-EOT

@@ -28,7 +28,7 @@ resource "juju_integration" "landscape_server_rabbitmq_server" {
     ]
   }
 
-  depends_on = [ juju_application.landscape_server, juju_application.rabbitmq_server ]
+  depends_on = [juju_application.landscape_server, juju_application.rabbitmq_server]
 }
 
 
@@ -64,7 +64,7 @@ resource "juju_integration" "landscape_server_haproxy" {
     ]
   }
 
-  depends_on = [ juju_application.landscape_server, juju_application.haproxy ]
+  depends_on = [juju_application.landscape_server, juju_application.haproxy]
 }
 
 
@@ -100,5 +100,5 @@ resource "juju_integration" "landscape_server_postgresql" {
     ]
   }
 
-  depends_on = [ juju_application.landscape_server, juju_application.postgresql ]
+  depends_on = [juju_application.landscape_server, juju_application.postgresql]
 }

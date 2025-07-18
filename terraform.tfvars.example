@@ -2,6 +2,14 @@ model_name = "landscape"
 
 path_to_ssh_key = "/home/ubuntu/.ssh/id_ed25519.pub"
 
+cloud_name = "localhost"
+
+cloud_region = "localhost"
+
+credential_name = "localhost"
+
+arch = amd64
+
 hostname = "landscape"
 
 domain = "example.com"

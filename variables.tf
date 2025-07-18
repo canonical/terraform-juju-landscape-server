@@ -5,10 +5,31 @@ variable "model_name" {
   type        = string
 }
 
-
 variable "path_to_ssh_key" {
   description = "The path to the SSH key to use for the model"
   type        = string
+}
+
+variable "cloud_name" {
+  description = "Name of the Juju cloud where the model will operate"
+  default     = "localhost"
+}
+
+variable "cloud_region" {
+  description = "Region of the Juju cloud where the model will operate"
+  default     = "localhost"
+}
+
+variable "credential_name" {
+  description = "The name of the Juju credential to use for the model"
+  type        = string
+  default     = "localhost"
+}
+
+variable "arch" {
+  type        = string
+  default     = "amd64"
+  description = "CPU architecture"
 }
 
 # Landscape Server
@@ -76,6 +97,27 @@ variable "landscape_server_revision" {
   default = 134
 }
 
+variable "smtp_host" {
+  type    = string
+  default = ""
+}
+
+variable "smtp_port" {
+  type    = number
+  default = 587
+}
+
+variable "smtp_username" {
+  type    = string
+  default = ""
+}
+
+variable "smtp_password" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
+
 # HAProxy
 
 variable "haproxy_units" {
@@ -98,19 +140,21 @@ variable "haproxy_base" {
   default = "ubuntu@22.04"
 }
 
-variable "ssl_cert_content" {
+
+variable "b64_ssl_cert" {
   type        = string
   default     = ""
-  description = "SSL cert contents (fullchain.pem), if using your own domain"
+  description = "Base64-encoded SSL cert contents"
 }
 
-variable "ssl_key_content" {
+variable "b64_ssl_key" {
   type        = string
+  description = "Base64-encoded SSL key contents"
+  sensitive   = true
   default     = ""
-  description = "SSL key contents (privkey.pem), if using your own domain"
 }
 
-# Postgres
+# PostgreSQL
 
 variable "postgresql_units" {
   type    = number
@@ -132,7 +176,7 @@ variable "postgresql_base" {
   default = "ubuntu@22.04"
 }
 
-# Rabbit
+# RabbitMQ Server
 
 variable "rabbitmq_server_units" {
   type    = number
@@ -152,31 +196,4 @@ variable "rabbitmq_server_channel" {
 variable "rabbitmq_server_base" {
   type    = string
   default = "ubuntu@22.04"
-}
-
-variable "smtp_host" {
-  type    = string
-  default = ""
-}
-
-variable "smtp_port" {
-  type    = number
-  default = 587
-}
-
-variable "smtp_username" {
-  type    = string
-  default = ""
-}
-
-variable "smtp_password" {
-  type      = string
-  sensitive = true
-  default   = ""
-}
-
-variable "arch" {
-  type = string
-  default = "amd64"
-  description = "CPU architecture"
 }
