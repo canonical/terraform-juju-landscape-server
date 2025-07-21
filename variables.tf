@@ -37,6 +37,7 @@ variable "arch" {
 variable "min_install" {
   description = "Install recommended packages like landscape-hashids but takes longer to install"
   type        = bool
+  default     = true
 }
 
 variable "admin_name" {
@@ -59,16 +60,18 @@ variable "admin_password" {
 variable "landscape_ppa" {
   description = "PPA to use for the Landscape Server charm"
   type        = string
+  default     = "ppa:landscape/self-hosted-beta"
 }
 
 variable "landscape_server_channel" {
   type    = string
-  default = "latest/stable"
+  default = "latest-stable/edge"
 }
 
 
 variable "landscape_server_base" {
-  type = string
+  type    = string
+  default = "ubuntu@24.04"
 }
 
 variable "landscape_server_units" {
@@ -94,7 +97,7 @@ variable "registration_key" {
 
 variable "landscape_server_revision" {
   type    = number
-  default = 134
+  default = 144
 }
 
 variable "smtp_host" {
@@ -118,6 +121,11 @@ variable "smtp_password" {
   default   = ""
 }
 
+variable "system_email" {
+  type    = string
+  default = ""
+}
+
 # HAProxy
 
 variable "haproxy_units" {
@@ -127,12 +135,12 @@ variable "haproxy_units" {
 
 variable "haproxy_revision" {
   type    = number
-  default = 75
+  default = 147
 }
 
 variable "haproxy_channel" {
   type    = string
-  default = "latest/stable"
+  default = "latest/edge"
 }
 
 variable "haproxy_base" {
@@ -163,7 +171,7 @@ variable "postgresql_units" {
 
 variable "postgresql_revision" {
   type    = number
-  default = 468
+  default = 553
 }
 
 variable "postgresql_channel" {
@@ -185,15 +193,15 @@ variable "rabbitmq_server_units" {
 
 variable "rabbitmq_server_revision" {
   type    = number
-  default = 188
+  default = 237
 }
 
 variable "rabbitmq_server_channel" {
   type    = string
-  default = "3.9/stable"
+  default = "latest/edge"
 }
 
 variable "rabbitmq_server_base" {
   type    = string
-  default = "ubuntu@22.04"
+  default = "ubuntu@24.04"
 }
