@@ -8,7 +8,7 @@ cloud_region = "localhost"
 
 credential_name = "localhost"
 
-arch = amd64
+arch = "amd64"
 
 hostname = "landscape"
 
