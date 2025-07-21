@@ -49,12 +49,14 @@ variable "admin_name" {
 variable "admin_email" {
   description = "Email of the default admin"
   type        = string
+  default     = ""
 }
 
 variable "admin_password" {
   description = "Password of the default admin"
   type        = string
   sensitive   = true
+  default     = ""
 }
 
 variable "landscape_ppa" {
