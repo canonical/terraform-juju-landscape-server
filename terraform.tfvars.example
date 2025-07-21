@@ -2,14 +2,6 @@ model_name = "landscape"
 
 path_to_ssh_key = "/home/ubuntu/.ssh/id_ed25519.pub"
 
-cloud_name = "localhost"
-
-cloud_region = "localhost"
-
-credential_name = "localhost"
-
-arch = "amd64"
-
 hostname = "landscape"
 
 domain = "example.com"
@@ -20,28 +12,4 @@ admin_email = "admin@example.com"
 
 admin_password = "SuP3R!$eCur3_PWd*"
 
-min_install = true
-
-landscape_ppa = "ppa:landscape/self-hosted-beta"
-
-landscape_server_units = 1
-
 registration_key = "key"
-
-landscape_server_channel = "latest/stable"
-
-landscape_server_base = "ubuntu@24.04"
-
-landscape_server_revision = 134
-
-postgresql_units = 1
-
-rabbitmq_server_units = 1
-
-smtp_host = "smtp.sendgrid.net"
-
-smtp_port = 587
-
-smtp_username = "apikey"
-
-smtp_password = ""

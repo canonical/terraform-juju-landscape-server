@@ -42,5 +42,5 @@ where `fullchain.pem` and `privkey.pem` are the paths of the public and private 
 
 ## Notes
 
-- This plan is currently based on the [`latest-stable`](https://github.com/canonical/landscape-bundles/tree/scalable-stable) version of the Landscape Server Charm Bundle
+- This plan is based on the [`Landscape Server charm bundle`](https://github.com/canonical/landscape-charm/blob/main/bundle-examples/bundle.yaml)
 - See the plan in action in [a preconfigured, local Landscape demo](https://github.com/jansdhillon/landscape-demo)
