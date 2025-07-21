@@ -71,7 +71,7 @@ variable "landscape_server_channel" {
 
 variable "landscape_server_base" {
   type    = string
-  default = "ubuntu@24.04"
+  default = "ubuntu@22.04"
 }
 
 variable "landscape_server_units" {
@@ -147,7 +147,6 @@ variable "haproxy_base" {
   type    = string
   default = "ubuntu@22.04"
 }
-
 
 variable "b64_ssl_cert" {
   type        = string

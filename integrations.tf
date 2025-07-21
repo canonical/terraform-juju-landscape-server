@@ -73,7 +73,7 @@ resource "juju_integration" "landscape_server_rabbitmq_server" {
   model = var.model_name
 
   application {
-    name     = juju_application.landscape_server.name
+    name = juju_application.landscape_server.name
   }
 
   application {

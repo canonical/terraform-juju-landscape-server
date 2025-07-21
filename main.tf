@@ -1,10 +1,10 @@
 resource "juju_model" "landscape" {
-  name = var.model_name
+  name        = var.model_name
   constraints = "arch=${var.arch}"
-  credential = var.credential_name
+  credential  = var.credential_name
 
   cloud {
-    name = var.cloud_name
+    name   = var.cloud_name
     region = var.cloud_region
   }
 
