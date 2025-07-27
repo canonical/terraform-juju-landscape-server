@@ -1,18 +1,6 @@
-resource "juju_application" "landscape_server" {
-  name        = "landscape-server"
-  model       = var.model_name
-  units       = var.landscape_server_units
-  constraints = "arch=${var.arch} mem=4096M"
-
-
-  charm {
-    name     = "landscape-server"
-    channel  = var.landscape_server_channel
-    base     = var.landscape_server_base
-    revision = var.landscape_server_revision
-
-  }
-
+module "landscape_server" {
+  source = "git::https://github.com/jansdhillon/landscape-charm.git//terraform?ref=tf-charm-module-latest-stable-edge"
+  model  = var.model_name
   config = {
     landscape_ppa    = var.landscape_ppa
     registration_key = var.registration_key
