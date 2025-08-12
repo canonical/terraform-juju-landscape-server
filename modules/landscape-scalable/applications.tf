@@ -3,7 +3,7 @@
 
 module "landscape_server" {
   source      = "git::https://github.com/jansdhillon/landscape-charm.git//terraform?ref=tf-charm-module-latest-stable-edge"
-  model       = var.model
+  model       = var.create_model ? juju_model.landscape[0].name : local.model
   config      = var.landscape_server.config
   app_name    = var.landscape_server.app_name
   channel     = var.landscape_server.channel
@@ -50,7 +50,7 @@ resource "terraform_data" "setup_postfix" {
 
 module "haproxy" {
   source      = "git::https://github.com/canonical/haproxy-operator.git//terraform/charm?ref=rev211"
-  model       = var.model
+  model       = var.create_model ? juju_model.landscape[0].name : local.model
   config      = var.haproxy.config
   app_name    = var.haproxy.app_name
   channel     = var.haproxy.channel
@@ -62,7 +62,7 @@ module "haproxy" {
 module "postgresql" {
   source = "git::https://github.com/canonical/postgresql-operator.git//terraform?ref=rev848"
   # NOTE: they should comply here, may need to update later if they conform to the inputs
-  juju_model_name = var.model
+  juju_model_name = var.create_model ? juju_model.landscape[0].name : local.model
   config          = var.postgresql.config
   app_name        = var.postgresql.app_name
   channel         = var.postgresql.channel
@@ -74,7 +74,7 @@ module "postgresql" {
 # TODO: Replace with internal charm module if/when it's created
 resource "juju_application" "rabbitmq_server" {
   name        = "rabbitmq-server"
-  model       = var.model
+  model       = var.create_model ? juju_model.landscape[0].name : local.model
   units       = var.rabbitmq_server.units
   constraints = var.rabbitmq_server.constraints
   config      = var.rabbitmq_server.config

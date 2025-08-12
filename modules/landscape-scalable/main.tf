@@ -17,7 +17,7 @@ resource "terraform_data" "juju_wait_for_landscape" {
       juju wait-for model $MODEL --timeout 3600s --query='forEach(units, unit => (unit.workload-status == "active" || unit.workload-status == "blocked"))'
     EOT
     environment = {
-      MODEL = juju_model.landscape[0].name
+      MODEL = var.create_model ? juju_model.landscape[0].name : local.model
     }
   }
 

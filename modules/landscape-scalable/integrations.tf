@@ -2,7 +2,7 @@
 # See LICENSE file for licensing details.
 
 resource "juju_integration" "landscape_server_inbound_amqp" {
-  model = var.model
+  model = var.create_model ? juju_model.landscape[0].name : local.model
 
   application {
     name     = module.landscape_server.app_name
@@ -21,7 +21,7 @@ resource "juju_integration" "landscape_server_inbound_amqp" {
 }
 
 resource "juju_integration" "landscape_server_outbound_amqp" {
-  model = var.model
+  model = var.create_model ? juju_model.landscape[0].name : local.model
 
   application {
     name     = module.landscape_server.app_name
@@ -39,7 +39,7 @@ resource "juju_integration" "landscape_server_outbound_amqp" {
 
 # TODO: update when RMQ charm module exists
 resource "juju_integration" "landscape_server_rabbitmq_server" {
-  model = var.model
+  model = var.create_model ? juju_model.landscape[0].name : local.model
 
   application {
     name = module.landscape_server.app_name
@@ -57,7 +57,7 @@ resource "juju_integration" "landscape_server_rabbitmq_server" {
 }
 
 resource "juju_integration" "landscape_server_haproxy" {
-  model = var.model
+  model = var.create_model ? juju_model.landscape[0].name : local.model
 
   application {
     name = module.landscape_server.app_name
@@ -71,7 +71,7 @@ resource "juju_integration" "landscape_server_haproxy" {
 
 
 resource "juju_integration" "landscape_server_postgresql" {
-  model = var.model
+  model = var.create_model ? juju_model.landscape[0].name : local.model
 
   application {
     name     = module.landscape_server.app_name

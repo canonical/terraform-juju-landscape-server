@@ -16,12 +16,12 @@ variable "model" {
 
 variable "domain" {
   type    = string
-  default = "landscape"
+  default = "example.com"
 }
 
 variable "hostname" {
   type    = string
-  default = "example.com"
+  default = "landscape"
 }
 
 # Modules
