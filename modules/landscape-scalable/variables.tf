@@ -53,6 +53,27 @@ variable "hostname" {
   default = "landscape"
 }
 
+variable "smtp_host" {
+  type    = string
+  default = "smtp.sendgrid.net"
+}
+
+variable "smtp_port" {
+  type    = number
+  default = 587
+}
+
+variable "smtp_username" {
+  type    = string
+  default = "apikey"
+}
+
+variable "smtp_password" {
+  type      = string
+  sensitive = true
+  default   = null
+}
+
 # Charm modules
 
 variable "landscape_server" {

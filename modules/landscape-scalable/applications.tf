@@ -17,10 +17,10 @@ resource "terraform_data" "setup_postfix" {
   depends_on = [terraform_data.juju_wait_for_landscape]
 
   triggers_replace = {
-    smtp_host     = lookup(var.landscape_server.config, "smtp_host", "smtp.sendgrid.net")
-    smtp_port     = lookup(var.landscape_server.config, "smtp_port", 587)
-    smtp_username = lookup(var.landscape_server.config, "smtp_username", "")
-    smtp_password = lookup(var.landscape_server.config, "smtp_password", "")
+    smtp_host     = var.smtp_host
+    smtp_port     = var.smtp_port
+    smtp_username = var.smtp_username
+    smtp_password = var.smtp_password
     fqdn          = local.root_url
     domain        = var.domain
   }

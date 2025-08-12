@@ -21,6 +21,10 @@ The solution module offers the following configurable inputs:
 | `postgresql` | object | Configuration for the postgresql charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
 | `haproxy` | object | Configuration for the haproxy charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
 | `rabbitmq_server` | object | Configuration for the rabbitmq-server charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
+| `smtp_host` | string | SMTP server hostname | False |
+| `smtp_port` | number | SMTP server port | False |
+| `smtp_username` | string | SMTP username | False |
+| `smtp_password` | string | SMTP password (sensitive) | False |
 
 ### Outputs
 
