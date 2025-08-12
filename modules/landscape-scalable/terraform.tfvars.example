@@ -1,0 +1,24 @@
+model = "landscape"
+
+landscape_server = {
+  app_name    = "landscape-server"
+  channel     = "latest-stable/edge"
+  config      = {}
+  constraints = "arch=amd64"
+  resources   = {}
+  revision    = 144
+  base        = "ubuntu@22.04"
+  units       = 1
+}
+
+postgresql = {
+  app_name = "postgresql"
+}
+
+haproxy = {
+  app_name = "haproxy"
+}
+
+rabbitmq_server = {
+  app_name = "rabbitmq-server"
+}
