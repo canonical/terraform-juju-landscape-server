@@ -22,11 +22,13 @@ variable "path_to_ssh_key" {
 variable "cloud_name" {
   description = "Name of the Juju cloud where the model will operate"
   default     = "localhost"
+  type        = string
 }
 
 variable "cloud_region" {
   description = "Region of the Juju cloud where the model will operate"
   default     = "localhost"
+  type        = string
 }
 
 variable "credential_name" {

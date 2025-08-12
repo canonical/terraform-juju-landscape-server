@@ -27,3 +27,8 @@ output "applications" {
     rabbitmq_server  = juju_application.rabbitmq_server
   }
 }
+
+output "self_signed_server" {
+  value     = local.self_signed ? true : false
+  sensitive = true
+}
