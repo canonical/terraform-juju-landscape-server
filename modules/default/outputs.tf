@@ -1,3 +1,5 @@
+# © 2025 Canonical Ltd.
+# See LICENSE file for licensing details.
 output "model_name" {
   description = "Name of the Juju model"
   value       = juju_model.landscape.name

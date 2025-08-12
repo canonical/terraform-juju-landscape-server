@@ -1,3 +1,5 @@
+# © 2025 Canonical Ltd.
+# See LICENSE file for licensing details.
 resource "juju_integration" "landscape_server_inbound_amqp" {
   model = var.model_name
 

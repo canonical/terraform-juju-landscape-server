@@ -1,3 +1,5 @@
+# © 2025 Canonical Ltd.
+# See LICENSE file for licensing details.
 locals {
   self_signed  = var.b64_ssl_key == "" || var.b64_ssl_cert == ""
   root_url     = "${var.hostname}.${var.domain}"

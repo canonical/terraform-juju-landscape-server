@@ -1,3 +1,5 @@
+# © 2025 Canonical Ltd.
+# See LICENSE file for licensing details.
 resource "juju_model" "landscape" {
   name        = var.model_name
   constraints = "arch=${var.arch}"

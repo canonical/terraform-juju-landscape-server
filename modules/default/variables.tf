@@ -1,4 +1,5 @@
-# Juju model
+# © 2025 Canonical Ltd.
+# See LICENSE file for licensing details.
 
 variable "model" {
   description = "The name of the Juju model to deploy Landscape Server to"

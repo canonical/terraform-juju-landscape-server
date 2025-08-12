@@ -1,3 +1,5 @@
+# © 2025 Canonical Ltd.
+# See LICENSE file for licensing details.
 module "landscape_server" {
   source = "git::https://github.com/jansdhillon/landscape-charm.git//terraform?ref=tf-charm-module-latest-stable-edge"
   model  = var.model_name
