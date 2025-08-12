@@ -5,10 +5,6 @@ resource "juju_model" "landscape" {
   name  = local.model
 }
 
-locals {
-  model = "landscape"
-}
-
 # Wait for Landscape Server model to stabilize
 resource "terraform_data" "juju_wait_for_landscape" {
   depends_on = [juju_model.landscape[0]]

@@ -10,22 +10,12 @@ output "landscape_root_url" {
   value = local.root_url
 }
 
-output "self_signed_server" {
-  value     = local.self_signed ? true : false
-  sensitive = true
-}
-
 output "admin_email" {
   value = lookup(var.landscape_server.config, "admin_email", null)
 }
 
 output "admin_password" {
   value     = lookup(var.landscape_server.config, "admin_password", null)
-  sensitive = true
-}
-
-output "using_smtp" {
-  value     = local.using_smtp ? true : false
   sensitive = true
 }
 
