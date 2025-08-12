@@ -1,8 +1,8 @@
 # Juju model
 
-variable "model_name" {
+variable "model" {
   description = "The name of the Juju model to deploy Landscape Server to"
-  type        = string
+  type        = null
 }
 
 variable "path_to_ssh_key" {

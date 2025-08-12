@@ -1,46 +1,20 @@
-# terraform-landscape-server
+# SD-Core Terraform Modules
 
-## Configure a Juju cloud
+This project contains 3 [Terraform][Terraform] modules to deploy the following SD-Core bundles: [SD-Core][sdcore-k8s], [SD-Core CP][sdcore-control-plane-k8s] and [SD-Core UP][sdcore-user-plane-k8s].
 
-This module requires that a Juju cloud is already initialized with a credential for it defined and accesible.
-For example, to use `localhost`:
+The modules use the [Terraform Juju provider][Terraform Juju provider] to model the bundle deployment onto any Kubernetes environment managed by [Juju][Juju].
 
-```sh
-juju boostrap localhost landscape-controller
-```
+`sdcore-k8s` module deploys a standalone 5G core network. This module contains the 5G control plane functions, the UPF, NMS, Grafana Agent, Traefik, Self Signed Certificates and MongoDB.
 
-If not using `localhost`, you must set the `cloud_name`, `cloud_region`, and `credential_name` variables in `terraform.tfvars.example`.
+`sdcore-control-plane-k8s` module deploys the 5G control plane and the `sdcore-user-plane-k8s` module deploys only the 5G user plane. Hence, the SD-Core 5G core network deployment could be performed following the Control and User Plane Separation (CUPS) principles.
 
-## Initialize the module
+## Deploying sdcore-k8s modules with Terraform
 
-```sh
-terraform init
-```
+In order to deploy SD-Core modules, please follow the instructions in the `README.md` of the module.
 
-> [!TIP]
-> The module can be customized by editing the values in `terraform.tfvars.example`.
-
-## Deploy Landscape Server
-
-Remove the `.example` extension from `terraform.tfvars.example` to use those variables.
-
-Then, apply the plan:
-
-```sh
-terraform apply
-```
-
-### (Optional) Use a custom SSL certificate
-
-```sh
-terraform apply \
--var "b64_ssl_cert=$(sudo base64 fullchain.pem)" \
--var "b64_ssl_key=$(sudo base64 privkey.pem)"
-```
-
-where `fullchain.pem` and `privkey.pem` are the paths of the public and private key of the SSL certificate.
-
-## Notes
-
-- This plan is based on the [`Landscape Server charm bundle`](https://github.com/canonical/landscape-charm/blob/main/bundle-examples/bundle.yaml)
-- See the plan in action in [a preconfigured, local Landscape demo](https://github.com/jansdhillon/landscape-demo)
+[Terraform]: https://www.terraform.io/
+[Terraform Juju provider]: https://registry.terraform.io/providers/juju/juju/latest
+[Juju]: https://juju.is
+[sdcore-k8s]: https://charmhub.io/sdcore-k8s
+[sdcore-control-plane-k8s]: https://charmhub.io/sdcore-control-plane-k8s
+[sdcore-user-plane-k8s]: https://charmhub.io/sdcore-user-plane-k8
