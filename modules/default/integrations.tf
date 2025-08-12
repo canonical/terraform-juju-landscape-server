@@ -1,7 +1,7 @@
 # © 2025 Canonical Ltd.
 # See LICENSE file for licensing details.
 resource "juju_integration" "landscape_server_inbound_amqp" {
-  model = var.model_name
+  model = var.model
 
   application {
     name     = module.landscape_server.app_name
@@ -20,7 +20,7 @@ resource "juju_integration" "landscape_server_inbound_amqp" {
 }
 
 resource "juju_integration" "landscape_server_outbound_amqp" {
-  model = var.model_name
+  model = var.model
 
   application {
     name     = module.landscape_server.app_name
@@ -37,7 +37,7 @@ resource "juju_integration" "landscape_server_outbound_amqp" {
 }
 
 resource "juju_integration" "landscape_server_rabbitmq_server" {
-  model = var.model_name
+  model = var.model
 
   application {
     name     = module.landscape_server.app_name
@@ -55,7 +55,7 @@ resource "juju_integration" "landscape_server_rabbitmq_server" {
 }
 
 resource "juju_integration" "landscape_server_haproxy" {
-  model = var.model_name
+  model = var.model
 
   application {
     name     = module.landscape_server.app_name
@@ -70,7 +70,7 @@ resource "juju_integration" "landscape_server_haproxy" {
 
 
 resource "juju_integration" "landscape_server_postgresql" {
-  model = var.model_name
+  model = var.model
 
   application {
     name     = module.landscape_server.app_name

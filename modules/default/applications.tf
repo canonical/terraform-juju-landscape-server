@@ -2,56 +2,19 @@
 # See LICENSE file for licensing details.
 module "landscape_server" {
   source = "git::https://github.com/jansdhillon/landscape-charm.git//terraform?ref=tf-charm-module-latest-stable-edge"
-  model  = var.model_name
-  config = {
-    landscape_ppa    = var.landscape_ppa
-    registration_key = var.registration_key
-    admin_name       = var.admin_name
-    admin_email      = var.admin_email
-    admin_password   = var.admin_password
-    min_install      = var.min_install
-    # Bugged: https://warthogs.atlassian.net/browse/LNDENG-2729
-    # root_url         = local.root_url
-    smtp_relay_host = local.using_smtp ? var.smtp_host : ""
-    system_email    = local.using_smtp ? local.system_email : ""
-  }
-
-  depends_on = [juju_model.landscape]
+  model  = var.model
+  config = var.landscape_server.config
 }
 
-resource "juju_application" "haproxy" {
-  name        = "haproxy"
-  model       = var.model_name
-  units       = var.haproxy_units
-  constraints = "arch=${var.arch}"
-
-
-  charm {
-    name     = "haproxy"
-    revision = var.haproxy_revision
-    channel  = var.haproxy_channel
-    base     = var.haproxy_base
-  }
-
-  expose {}
-
-  config = {
-    default_timeouts            = "queue 60000, connect 5000, client 120000, server 120000"
-    global_default_bind_options = "no-tlsv10"
-    services                    = ""
-    ssl_cert                    = local.self_signed ? "SELFSIGNED" : var.b64_ssl_cert
-    ssl_key                     = local.self_signed ? "" : var.b64_ssl_key
-
-  }
-
-  depends_on = [juju_model.landscape]
-
-
+module "haproxy" {
+  source = "git::https://github.com/canonical/haproxy-operator.git//terraform/charm"
+  model  = var.model
+  config = var.haproxy.config
 }
 
 resource "juju_application" "postgresql" {
   name        = "postgresql"
-  model       = var.model_name
+  model       = var.model
   units       = var.postgresql_units
   constraints = "arch=${var.arch} mem=2048M"
 
@@ -79,7 +42,7 @@ resource "juju_application" "postgresql" {
 
 resource "juju_application" "rabbitmq_server" {
   name        = "rabbitmq-server"
-  model       = var.model_name
+  model       = var.model
   units       = var.rabbitmq_server_units
   constraints = "arch=${var.arch} mem=2048M"
 

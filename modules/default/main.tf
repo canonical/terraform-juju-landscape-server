@@ -1,7 +1,7 @@
 # © 2025 Canonical Ltd.
 # See LICENSE file for licensing details.
 resource "juju_model" "landscape" {
-  name        = var.model_name
+  name        = var.model
   constraints = "arch=${var.arch}"
   credential  = var.credential_name
 
@@ -21,7 +21,7 @@ resource "juju_model" "landscape" {
 }
 
 resource "juju_ssh_key" "model_ssh_key" {
-  model      = var.model_name
+  model      = var.model
   payload    = trimspace(file(var.path_to_ssh_key))
   depends_on = [juju_model.landscape]
 }

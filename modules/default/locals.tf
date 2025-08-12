@@ -1,9 +1,7 @@
 # © 2025 Canonical Ltd.
 # See LICENSE file for licensing details.
 locals {
-  self_signed  = var.b64_ssl_key == "" || var.b64_ssl_cert == ""
-  root_url     = "${var.hostname}.${var.domain}"
-  using_smtp   = !local.self_signed && var.smtp_password != "" && var.smtp_host != "" && var.smtp_username != ""
-  system_email = var.system_email != "" ? var.system_email : "${split("@", var.admin_email)[0]}@${var.domain}"
-  legacy_amqp  = var.landscape_server_channel != "latest-stable/edge" || var.landscape_server_revision <= 141
+  self_signed  = var.haproxy.config.b64_ssl_key == "" || var.haproxy.config.b64_ssl_cert == ""
+  using_smtp   = !local.self_signed && var.landscape_server.config.smtp_password != "" && var.landscape_server.config.smtp_host != "" && var.landscape_server.config.smtp_username != ""
+  legacy_amqp  = var.landscape_server.channel != "latest-stable/edge" || var.landscape_server.revision <= 141
 }
