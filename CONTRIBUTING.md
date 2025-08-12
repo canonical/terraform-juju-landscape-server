@@ -2,12 +2,12 @@
 
 ## Prerequisites
 
-To make contributions to this repository, the following software is needed to be installed in your development environment. Please [set up your environment][set-up-environment] before development.
+To make contributions to this repository, the following software is needed to be installed in your development environment. Please ensure the following are installed before development.
 
-- A Kubernetes cluster
-- Juju>=3.5
-- Juju controller bootstrapped onto the K8s cluster
+- Juju >=3.5
+- A Juju controller bootstrapped onto a machine cloud
 - Terraform
+- A model for testing
 
 ## Development and Testing
 
@@ -17,26 +17,24 @@ A Terraform working directory needs to be initialized at the beginning.
 
 Initialise the provider:
 
-```console
+```sh
 terraform init
 ```
 
 Format the *.tf files to a canonical format and style:
 
-```console
+```sh
 terraform fmt
 ```
 
 Check the syntax:
 
-```console
+```sh
 terraform validate
 ```
 
 Preview the changes:
 
-```console
+```sh
 terraform plan
 ```
-
-[set-up-environment]: [https://discourse.charmhub.io/t/set-up-your-development-environment-with-microk8s-for-juju-terraform-provider/13109]

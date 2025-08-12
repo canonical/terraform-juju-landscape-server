@@ -1,13 +1,5 @@
 # © 2025 Canonical Ltd.
 # See LICENSE file for licensing details.
-output "model_name" {
-  description = "Name of the Juju model"
-  value       = data.juju_model.landscape.name
-}
-
-output "landscape_account_name" {
-  value = "standalone"
-}
 
 output "registration_key" {
   value     = lookup(var.landscape_server.config, "registration_key", null)

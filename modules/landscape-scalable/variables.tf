@@ -3,6 +3,12 @@
 
 # Model level variables
 
+variable "create_model" {
+  description = "Allows to skip Juju model creation and re-use a model created in a higher level module"
+  type        = bool
+  default     = true
+}
+
 variable "model" {
   description = "The name of the Juju model to deploy Landscape Server to"
   type        = string

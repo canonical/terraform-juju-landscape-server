@@ -1,18 +1,23 @@
 # © 2025 Canonical Ltd.
 # See LICENSE file for licensing details.
-data "juju_model" "landscape" {
-  name = var.model
+resource "juju_model" "landscape" {
+  count = var.create_model ? 1 : 0
+  name  = local.model
+}
+
+locals {
+  model = "landscape"
 }
 
 # Wait for Landscape Server model to stabilize
 resource "terraform_data" "juju_wait_for_landscape_server" {
-  depends_on = [data.juju_model.landscape]
+  depends_on = [juju_model.landscape[0]]
   provisioner "local-exec" {
     command = <<-EOT
       juju wait-for model $MODEL --timeout 3600s --query='forEach(units, unit => (unit.workload-status == "active" || unit.workload-status == "blocked"))'
     EOT
     environment = {
-      MODEL = data.juju_model.landscape.name
+      MODEL = juju_model.landscape[0].name
     }
   }
 
@@ -20,14 +25,15 @@ resource "terraform_data" "juju_wait_for_landscape_server" {
 }
 
 # Setup Postfix (if configured)
+# Setup Postfix (if configured)
 resource "terraform_data" "setup_postfix" {
   depends_on = [terraform_data.juju_wait_for_landscape_server]
 
   triggers_replace = {
-    smtp_host     = var.landscape_server.config["smtp_host"]
-    smtp_port     = var.landscape_server.config["smtp_port"]
-    smtp_username = var.landscape_server.config["smtp_username"]
-    smtp_password = var.landscape_server.config["smtp_password"]
+    smtp_host     = lookup(var.landscape_server.config, "smtp_host", "")
+    smtp_port     = lookup(var.landscape_server.config, "smtp_port", "587")
+    smtp_username = lookup(var.landscape_server.config, "smtp_username", "")
+    smtp_password = lookup(var.landscape_server.config, "smtp_password", "")
     fqdn          = local.root_url
     domain        = var.domain
   }
@@ -49,7 +55,6 @@ resource "terraform_data" "setup_postfix" {
   }
 
   lifecycle {
-    # only run once
     ignore_changes = all
   }
 
