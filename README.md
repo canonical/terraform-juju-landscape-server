@@ -1,46 +1,12 @@
-# terraform-landscape-server
+# Landscape Server Terraform Product Module
 
-## Configure a Juju cloud
+This project contains the [Terraform][Terraform] product module to deploy the [Landscape Server bundle][Landscape Server bundle].
 
-This module requires that a Juju cloud is already initialized with a credential for it defined and accesible.
-For example, to use `localhost`:
+The module use the [Terraform Juju provider][Terraform Juju provider] to model the bundle deployment onto any machine environment managed by [Juju][Juju].
 
-```sh
-juju boostrap localhost landscape-controller
-```
+In order to deploy the Landscape Server product module, please follow the instructions in the `README.md` of the module.
 
-If not using `localhost`, you must set the `cloud_name`, `cloud_region`, and `credential_name` variables in `terraform.tfvars.example`.
-
-## Initialize the module
-
-```sh
-terraform init
-```
-
-> [!TIP]
-> The module can be customized by editing the values in `terraform.tfvars.example`.
-
-## Deploy Landscape Server
-
-Remove the `.example` extension from `terraform.tfvars.example` to use those variables.
-
-Then, apply the plan:
-
-```sh
-terraform apply
-```
-
-### (Optional) Use a custom SSL certificate
-
-```sh
-terraform apply \
--var "b64_ssl_cert=$(sudo base64 fullchain.pem)" \
--var "b64_ssl_key=$(sudo base64 privkey.pem)"
-```
-
-where `fullchain.pem` and `privkey.pem` are the paths of the public and private key of the SSL certificate.
-
-## Notes
-
-- This plan is based on the [`Landscape Server charm bundle`](https://github.com/canonical/landscape-charm/blob/main/bundle-examples/bundle.yaml)
-- See the plan in action in [a preconfigured, local Landscape demo](https://github.com/jansdhillon/landscape-demo)
+[Terraform]: https://www.terraform.io/
+[Terraform Juju provider]: https://registry.terraform.io/providers/juju/juju/latest
+[Juju]: https://juju.is
+[Landscape Server bundle]: https://github.com/canonical/landscape-charm/bundles/main/bundle-examples/bundle.yaml
