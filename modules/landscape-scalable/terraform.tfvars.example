@@ -22,3 +22,5 @@ haproxy = {
 rabbitmq_server = {
   app_name = "rabbitmq-server"
 }
+
+path_to_ssh_key = "/home/ubuntu/.ssh/id_ed25519.pub"

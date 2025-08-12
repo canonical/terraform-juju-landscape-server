@@ -14,6 +14,33 @@ variable "model" {
   type        = string
 }
 
+variable "path_to_ssh_key" {
+  description = "The path to the SSH key to use for the model"
+  type        = string
+}
+
+variable "cloud_name" {
+  description = "Name of the Juju cloud where the model will operate"
+  default     = "localhost"
+}
+
+variable "cloud_region" {
+  description = "Region of the Juju cloud where the model will operate"
+  default     = "localhost"
+}
+
+variable "credential_name" {
+  description = "The name of the Juju credential to use for the model"
+  type        = string
+  default     = "localhost"
+}
+
+variable "arch" {
+  type        = string
+  default     = "amd64"
+  description = "CPU architecture"
+}
+
 variable "domain" {
   type    = string
   default = "example.com"
@@ -24,7 +51,7 @@ variable "hostname" {
   default = "landscape"
 }
 
-# Modules
+# Charm modules
 
 variable "landscape_server" {
   type = object({
