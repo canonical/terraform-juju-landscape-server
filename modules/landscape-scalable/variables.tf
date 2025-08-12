@@ -33,7 +33,7 @@ variable "landscape_server" {
     config      = optional(map(string), {})
     constraints = optional(string, "arch=amd64")
     resources   = optional(map(string), {})
-    revision    = optional(number, 144)
+    revision    = optional(number)
     base        = optional(string, "ubuntu@22.04")
     units       = optional(number, 1)
   })
@@ -69,7 +69,7 @@ variable "rabbitmq_server" {
   type = object({
     app_name    = optional(string, "rabbitmq-server")
     channel     = optional(string, "latest/edge")
-    config      = optional(map(string), { "consumer-timeout" : 259200000 })
+    config      = optional(map(string), {})
     constraints = optional(string, "arch=amd64")
     resources   = optional(map(string), {})
     revision    = optional(number)
