@@ -2,7 +2,7 @@
 # See LICENSE file for licensing details.
 
 module "landscape_server" {
-  source      = "git::https://github.com/jansdhillon/landscape-charm.git//terraform?ref=tf-charm-module-latest-stable-edge"
+  source      = "git::https://github.com/canonical/landscape-charm.git//terraform"
   model       = var.create_model ? juju_model.landscape[0].name : local.model
   config      = var.landscape_server.config
   app_name    = var.landscape_server.app_name
@@ -49,7 +49,7 @@ resource "terraform_data" "setup_postfix" {
 }
 
 module "haproxy" {
-  source      = "git::https://github.com/canonical/haproxy-operator.git//terraform/charm?ref=rev211"
+  source      = "git::https://github.com/canonical/haproxy-operator.git//terraform/charm"
   model       = var.create_model ? juju_model.landscape[0].name : local.model
   config      = var.haproxy.config
   app_name    = var.haproxy.app_name
@@ -60,7 +60,7 @@ module "haproxy" {
 }
 
 module "postgresql" {
-  source = "git::https://github.com/canonical/postgresql-operator.git//terraform?ref=rev848"
+  source = "git::https://github.com/canonical/postgresql-operator.git//terraform"
   # NOTE: they should comply here, may need to update later if they conform to the inputs
   juju_model_name = var.create_model ? juju_model.landscape[0].name : local.model
   config          = var.postgresql.config
