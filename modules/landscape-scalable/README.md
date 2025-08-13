@@ -1,10 +1,10 @@
-# Landscape Server Product Module
+# Landscape Server Scalable Product Module
 
 ## API
 
 ### Inputs
 
-The solution module offers the following configurable inputs:
+The product module offers the following configurable inputs:
 
 | Name | Type | Description | Required |
 | - | - | - | - |
@@ -28,7 +28,7 @@ The solution module offers the following configurable inputs:
 
 ### Outputs
 
-Upon applied, the solution module exports the following outputs:
+Upon being applied, the module exports the following outputs:
 
 | Name | Description |
 | - | - |
@@ -41,6 +41,6 @@ Upon applied, the solution module exports the following outputs:
 
 ## Notes
 
-- This plan is based on the [`Landscape Server charm bundle`](https://github.com/canonical/landscape-charm/blob/main/bundle-examples/bundle.yaml)
+- This plan is based on the [Landscape Server charm bundle](https://github.com/canonical/landscape-charm/blob/main/bundle-examples/bundle.yaml)
 - [Landscape Server charm module](https://github.com/jansdhillon/landscape-charm/tree/tf-charm-module-latest-stable-edge)
 - See the plan in action in [a preconfigured, local Landscape demo](https://github.com/jansdhillon/landscape-demo)
