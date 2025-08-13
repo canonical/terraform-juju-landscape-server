@@ -2,8 +2,7 @@
 # See LICENSE file for licensing details.
 
 output "registration_key" {
-  value     = lookup(var.landscape_server.config, "registration_key", null)
-  sensitive = true
+  value = lookup(var.landscape_server.config, "registration_key", null)
 }
 
 output "landscape_root_url" {
@@ -29,6 +28,5 @@ output "applications" {
 }
 
 output "self_signed_server" {
-  value     = local.self_signed ? true : false
-  sensitive = true
+  value = local.self_signed ? true : false
 }
