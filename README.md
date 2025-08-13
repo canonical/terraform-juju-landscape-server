@@ -9,4 +9,4 @@ In order to deploy the Landscape Server product module, please follow the instru
 [Terraform]: https://www.terraform.io/
 [Terraform Juju provider]: https://registry.terraform.io/providers/juju/juju/latest
 [Juju]: https://juju.is
-[Landscape Server bundle]: https://github.com/canonical/landscape-charm/bundles/main/bundle-examples/bundle.yaml
+[Landscape Server bundle]: https://github.com/canonical/landscape-charm/blob/main/bundle-examples/bundle.yaml

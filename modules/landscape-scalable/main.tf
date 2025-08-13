@@ -31,5 +31,5 @@ resource "terraform_data" "juju_wait_for_landscape" {
     }
   }
 
-  count = local.using_smtp ? 1 : 0
+  count = var.wait ? 1 : 0
 }
