@@ -5,10 +5,6 @@ output "registration_key" {
   value = lookup(var.landscape_server.config, "registration_key", null)
 }
 
-output "landscape_root_url" {
-  value = local.root_url
-}
-
 output "admin_email" {
   value = lookup(var.landscape_server.config, "admin_email", null)
 }
