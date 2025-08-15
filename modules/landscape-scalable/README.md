@@ -10,8 +10,8 @@ The product module offers the following configurable inputs:
 | - | - | - | - |
 | `haproxy` | object | Configuration for the haproxy charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
 | `landscape_server` | object | Configuration for the landscape-server charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
+| `model` | string | The name of the Juju model to deploy Landscape Server to | True |
 | `postgresql` | object | Configuration for the postgresql charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
-| `haproxy` | object | Configuration for the haproxy charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
 | `rabbitmq_server` | object | Configuration for the rabbitmq-server charm including app_name, channel, config, constraints, resources, revision, base, and units | True |
 
 ### Outputs
@@ -29,5 +29,5 @@ Upon being applied, the module exports the following outputs:
 ## Notes
 
 - This plan is based on the [Landscape Server charm bundle](https://github.com/canonical/landscape-charm/blob/main/bundle-examples/bundle.yaml)
-- [Landscape Server charm module](https://github.com/jansdhillon/landscape-charm/tree/tf-charm-module-latest-stable-edge)
+- [Landscape Server charm module](https://github.com/canonical/landscape-charm/tree/main/terraform)
 - See the plan in action in [a preconfigured, local Landscape demo](https://github.com/jansdhillon/landscape-demo)
