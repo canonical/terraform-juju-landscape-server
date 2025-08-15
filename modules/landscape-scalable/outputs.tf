@@ -6,10 +6,6 @@ output "registration_key" {
   sensitive = true
 }
 
-output "landscape_root_url" {
-  value = local.root_url
-}
-
 output "admin_email" {
   value = lookup(var.landscape_server.config, "admin_email", null)
 }
