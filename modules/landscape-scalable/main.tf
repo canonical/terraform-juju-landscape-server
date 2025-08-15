@@ -37,14 +37,14 @@ module "postgresql" {
 
 # TODO: Replace with internal charm module if/when it's created
 resource "juju_application" "rabbitmq_server" {
-  name        = "rabbitmq-server"
+  name        = var.rabbitmq_server.app_name
   model       = var.model
   units       = var.rabbitmq_server.units
   constraints = var.rabbitmq_server.constraints
   config      = var.rabbitmq_server.config
 
   charm {
-    name     = "rabbitmq-server"
+    name     = var.rabbitmq_server.app_name
     revision = var.rabbitmq_server.revision
     channel  = var.rabbitmq_server.channel
     base     = var.rabbitmq_server.base
@@ -130,7 +130,8 @@ resource "juju_integration" "landscape_server_postgresql" {
 
   application {
     # Output should be `app_name`, may have to change later when they comply
-    name     = module.postgresql.application_name
+    name = module.postgresql.application_name
+    # https://github.com/canonical/postgresql-operator/issues/1096
     endpoint = "db-admin"
   }
 
